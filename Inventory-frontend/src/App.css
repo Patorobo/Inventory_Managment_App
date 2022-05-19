@@ -1,0 +1,233 @@
+.Title{
+  font-family: Helvetica;
+  color: #eee;
+  text-align: center;
+}
+.App{
+  min-height: 100vh;  
+  background-color:  #ffdd99;
+}
+
+.wrapper{  
+  padding: 30px;
+  width:70%;  
+  margin: 50px;
+  font-family: calibri;
+  Background: #f2f2f2; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  }
+
+.Logo{
+  height: 50px;  
+  padding-right: 5px;
+}
+.Imgs{
+  padding-bottom: 20px;
+}
+.Main_image{
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Front_img{
+  height: 360px;
+}
+
+.Welcome{
+  font-family: 'Lucida Sans';
+  font-size: 35px;
+  padding-top: 5px;
+  text-align: center;
+  font-weight: bold;
+  color: #00000a;
+}
+.AddProduct{
+  margin: auto;
+  text-align: center;
+  padding-top: 10%;
+}
+.APtitle{
+  text-align: center;
+  padding-top: 20px;
+  margin-left: 15px;
+  font-family: Georgia;
+  font-weight: bold;
+  font-size: 30px;
+  color: #0000e6;
+}
+.StockDetail{
+  margin-left: 15px;
+}
+.NPtagline,
+.ASEtagline,
+.FUtagline,
+.CreditTagline{
+  font-family: 'Franklin Gothic Medium';
+  font-weight: bolder;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.ASErequest{
+  font-family: 'Franklin Gothic Medium';
+  font-weight: bold;
+  font-size: 30px;
+  color: #0000e6;
+}
+.ProductButton,
+.CreateButton,
+.AddButton,
+.UploadButton,
+.ASEbutton{
+  width: 140px;
+  height: 40px;
+  font-weight: bold;
+  color: #332200;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.ProductLabel{
+  font-size: 20px;
+  font-weight: bold;
+}
+.ProductDetails{
+  font-size: 22px;  
+}
+
+.InputText,
+.InputTag{
+  margin: 10px;
+  height: 30px;
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.InputTag{  
+  width: 100px;  
+}
+.SelectInput{
+  margin: 10px;
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;  
+}
+.ProductButton,
+.CreateButton{
+  background: linear-gradient(#FFE985,#FA742B);
+  margin-left: 5px;
+  width: 180px;  
+}
+.StockEventTable_Card{
+  margin: 12px 0;
+  border: 2px solid rgb(214, 207, 207);
+  border-radius: 3px;
+  padding: 24px;
+  margin-right: 5px;
+}
+.EventSum{
+  background-color: #d9faf1;
+}
+.AddStockEvent{
+  text-align: center;
+  padding-top: 10%;
+}
+.AddButton{
+  background: linear-gradient(#90F7EC,#32CCBC);
+  margin-bottom: 10px;
+}
+.ASEbutton{
+  background: linear-gradient(#81FFEF,#F067B4);
+  margin-left: 10px;
+}
+/* File Upload */
+.V_Centre{
+  align-self: center;
+}
+.UploadButton{
+  margin-top: 5%;
+  margin-left: 40%;
+  background:linear-gradient(#CE9FFC, #7367F0);
+}
+.AboutPic{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5px;
+  margin-left: 20%;
+  align-items: left;
+}
+.PatrickName{
+  font-family: Helvetica;
+  font-size: 40px;
+  color: black;
+  padding-top: 20px;
+  padding-left: 20px;
+} 
+.DataScience{
+  font-family: Helvetica;
+  font-size: 30px;
+  color: black;
+  padding-top: 5px;  
+}
+.Project{
+  font-family: Helvetica;
+  font-size: 20px;
+  color: black; 
+}
+.PatrickPhoto{
+  width: 200px;
+  height: 230px;
+  border-radius: 50%;
+}
+.ProfileContent{
+  flex-direction: column;
+}
+.GithubLogo1,
+.GithubLogo2{
+  height: 50px;
+}
+.GithubLogo1{
+  padding-left: 20px;
+}
+.GithubLogo2{
+  padding-left: 188px;
+}
+/* Table styling */
+table {
+  border-collapse: collapse;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+th {
+  background: #009578;
+  color: #ffffff;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 10px 20px;
+}
+
+tr:nth-child(even) {
+  background: #d3cdcd;
+}
+.chart{
+  padding: 50px;
+}

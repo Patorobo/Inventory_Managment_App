@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stockevents",
+  "info": {
+    "singularName": "stockevent",
+    "pluralName": "stockevents",
+    "displayName": "stockevent",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "add",
+        "remove"
+      ]
+    },
+    "qty": {
+      "type": "integer"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "stockevents"
+    },
+    "tag": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

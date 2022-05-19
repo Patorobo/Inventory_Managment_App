@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <!-- Loading in TensorFlow.js version 0.11.2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.2"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"> </script>
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- 'Customized icon' -->
+    <link rel="inventory-touch-icon" sizes="180x180" href="/inventory-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+    <h1>Inventory Management - Stock Events Analysis!</h1>
+    x: <input type="text" id="x" />
+    y: <input type="text" id="y" />
+
+    <input type="button" id="append" value="submit">
+    <hr />
+
+    <h4 id="tablehead">X-Values &nbsp Y-Values</h4>
+
+    <div id="table-view">
+    </div>
+    <div class="product-table"></div>
+    
+    <div style="padding:50px">
+        <canvas id="myChart" width="600" height="300"></canvas>
+    </div>
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel" src="Plot.js"></script>
+    
+    <script type="text/babel">
+        ReactDOM.render(<VisualizeEvents/>, document.querySelector(".product-table"));
+    </script>
+
+    
+
+    <script>
+        var xs = [] // starts empty, to be populated with .push
+        var ys = [] // starts empty, to be populated with .push
+        var bestfit = [] // to be populated by tf.js
+
+        //Create the model        
+
+        const model = tf.sequential();
+        model.add(tf.layers.dense({ units: 128, inputShape: [1] })); // layer 1
+        model.add(tf.layers.dense({ units: 128, inputShape: [128], activation: "sigmoid" })); // layer 2
+        model.add(tf.layers.dense({ units: 1, inputShape: [128] })); // output layer
+        model.compile({ loss: 'meanSquaredError', optimizer: 'adam' }); // compile with params
+
+
+        document.getElementById('x').value = 1; // create a starting value for our x
+
+        // the append id is given to our submit button, this will be called
+        document.getElementById("append").onclick = function () {
+            var x = document.getElementById("x").value; // grab the current value for x
+            var y = document.getElementById("y").value; // grab the current value for y
+            const table_view = document.querySelector("#table-view"); // grab the table-view id to display table
+            xs.push(x) // append that value to the xs
+            ys.push(y) // append that value to the ys
+
+            //Create table for x and y values
+            let table = document.createElement("table");
+            let tr = document.createElement("tr");
+
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+
+            td1.className = "td1Col";
+            td2.className = "td2Col";
+
+            td1.textContent = (x);
+            td2.textContent = (y);
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+
+            table.appendChild(tr);
+            table_view.appendChild(table);
+
+            document.getElementById('x').value = parseInt(x) + 1; // add 1 to the x automatically
+
+            // Train the model...then:
+            model.fit(tf.tensor(xs), tf.tensor(ys), { epochs: 150 }).then(() => {
+                bestfit = model.predict(tf.tensor(xs, [xs.length, 1])).dataSync(); // create best-fit line from xs data
+                var ctx = document.getElementById("myChart").getContext('2d'); // begin chart
+                // Chart data and settings:
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    options: { scales: { yAxes: [{ ticks: { beginAtZero: true } }] } },
+                    data: {
+                        labels: xs,
+                        datasets: [
+                            {
+                                label: 'Original Data',
+                                data: ys,
+                                borderWidth: 1,
+                            }, {
+                                label: 'Best Fit line',
+                                data: bestfit,
+                                borderWidth: 1,
+                                borderColor: '#FF0000',
+                                backgroundColor: 'rgba(1,1,1,0)'
+                            },]
+                    },
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
