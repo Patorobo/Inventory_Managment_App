@@ -29,10 +29,10 @@ export default () => (
               </Nav>
               <Nav>
                 <Nav.Link onClick={()=> window.open
-                  ("https://github.com/Patorobo/Inventory_Management_App/blob/main/README.md", "_blank")}>                  
+                  ("https://github.com/Patorobo/Inventory_Managment_App/blob/main/README.md", "_blank")}>                  
                   App Info</Nav.Link>
                 <Nav.Link onClick={()=> window.open                
-                  ("https://github.com/Patorobo/Inventory_Management_App/", "_blank")}>Github</Nav.Link>
+                  ("https://github.com/Patorobo/Inventory_Managment_App/", "_blank")}>Github</Nav.Link>
               </Nav>
             </Navbar.Collapse>
         </Navbar>
